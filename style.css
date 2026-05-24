@@ -1,0 +1,177 @@
+/* style.css */
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f5f5f7;
+}
+
+.container {
+    text-align: center;
+    background: white;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    width: 100%;
+    max-width: 500px; /* Limita a largura para ficar parecido com tela de celular */
+}
+
+/* --- ESTILO DO PICKER (.palette) --- */
+.picker-palette {
+    display: flex;
+    background-color: #eee;
+    border-radius: 8px;
+    padding: 4px;
+    margin-bottom: 24px;
+}
+
+.picker-tab {
+    flex: 1;
+    background: transparent;
+    color: #333;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.picker-tab.active {
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* --- ESTILOS DO VSTACK (Controles) --- */
+.controls-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* spacing: 20 do SwiftUI */
+    margin-bottom: 24px;
+}
+
+.input-row {
+    display: flex;
+    justify-content: center;
+}
+
+input[type="number"] {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    text-align: center;
+    width: 150px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-color: #e5e5ea;
+    margin: 8px 0;
+}
+
+.subheadline {
+    font-size: 15px;
+    color: #8e8e93; /* .foregroundColor(.secondary) */
+    margin: 0;
+}
+
+/* --- ESTILOS GERAIS --- */
+button {
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    border: none;
+    transition: transform 0.1s;
+}
+
+button:active {
+    transform: scale(0.96);
+}
+
+.primary-btn {
+    background-color: #007AFF;
+    color: white;
+}
+
+.secondary-btn {
+    background-color: #E5E5EA;
+    color: #000;
+}
+
+svg {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    margin: 20px 0;
+}
+
+.brand-part {
+    transition: fill 0.4s ease-in-out;
+}
+
+/* --- ESTILOS DA TELA 2 (COLOR ILLUSTRATION VIEW) --- */
+.illustration-wrap {
+    display: flex;
+    justify-content: center;
+    background: #fafafa;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 24px;
+    border: 1px solid #eee;
+}
+
+#illustrationSvg {
+    max-width: 180px; /* Tamanho focado apenas na ilustração */
+    height: auto;
+}
+
+#illus-3, #illus-5, #illus-8 {
+    transition: fill 0.3s ease;
+}
+
+.color-pickers-row {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.picker-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+}
+
+/* Estilizando o input color nativo para parecer um botão arredondado do iOS */
+input[type="color"] {
+    appearance: none;
+    -webkit-appearance: none;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    cursor: pointer;
+    padding: 0;
+    background: transparent;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+    border: 3px solid #e5e5ea;
+    border-radius: 12px;
+}
+

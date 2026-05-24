@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marca Mutante</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        
+        <div class="picker-palette">
+            <button class="picker-tab active" data-target="logoView">Cores do Logo</button>
+            <button class="picker-tab" data-target="colorView">Combinação de cores</button>
+        </div>
+
+        <div class="controls-stack">
+            <button id="randomBtn" class="primary-btn">Gerar número aleatório</button>
+            
+            <div class="input-row">
+                <input type="number" id="positionInput" min="1" max="5040" placeholder="opção">
+            </div>
+
+            <hr>
+
+            <p id="numberSequenceOutput" class="subheadline">Opção dos números: </p>
+        </div>
+
+        <div class="views-container">
+            
+            <div id="logoView" class="view-panel">
+                <svg id="mutantLogo" viewBox="0 0 1100 600" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <style>
+                            .cls-1 { fill: #6a8fd2; }
+                            .cls-2 { fill: #79badd; }
+                            .cls-3 { fill: #ff9d60; }
+                            .cls-4 { fill: #90b69e; }
+                            .cls-5 { fill: #fb705e; }
+                            .cls-6 { fill: #988cd2; }
+                            .cls-7 { fill: #ffd88a; }
+                            .cls-8 { fill: #fc7b5e; }
+                        </style>
+                    </defs>
+                    <g id="Camada_1-2" data-name="Camada 1">
+                        <g>
+                            <g>
+                                <rect class="cls-4 brand-part" x="879.59" y="273.9" width="219.79" height="247.26"/>
+                                <polygon class="cls-2 brand-part" points="1099.38 273.9 879.59 273.9 879.59 26.64 1099.38 273.9"/>
+                                <polygon class="cls-7 brand-part" points="879.59 26.64 1099.38 26.64 1099.38 273.9 879.59 26.64"/>
+                            </g>
+                            <polygon class="cls-6 brand-part" points="574.76 0 574.76 549.47 822.02 274.74 574.76 0"/>
+                            <polygon class="cls-1 brand-part" points="520.43 202.64 520.43 549.68 329.26 347.24 329.26 .21 520.43 202.64"/>
+                            <g>
+                                <rect class="cls-3 brand-part" x="31.4" y="323.8" width="211.93" height="176.61" transform="translate(-251.17 217.84) rotate(-45)"/>
+                                <rect class="cls-5 brand-part" x="49.06" y="31.4" width="176.61" height="211.93" transform="translate(-56.9 137.37) rotate(-45)"/>
+                                <polygon class="cls-8 brand-part" points="0 124.88 0 424.59 149.86 274.74 0 124.88"/>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+                
+                <div class="actions-row">
+                    <button id="exportBtn" class="secondary-btn">Exportar SVG</button>
+                </div>
+            </div>
+
+            <div id="colorView" class="view-panel" style="display: none;">
+                
+                <div class="illustration-wrap">
+                    <svg id="illustrationSvg" viewBox="0 0 250 350" xmlns="http://www.w3.org/2000/svg">
+                        
+                        <g transform="translate(40, -40) scale(0.85)">
+                            <rect id="illus-3" x="29.58" y="305.83" width="199.65" height="166.38" transform="translate(-237.17 205.45) rotate(-45)" fill="#fecb5f"/>
+                            <rect id="illus-5" x="46.22" y="30.37" width="166.38" height="199.65" transform="translate(-54.16 129.64) rotate(-45)" fill="#fc893c"/>
+                            <polygon id="illus-8" points="0 118.43 0 400.78 141.18 259.61 0 118.43" fill="#fc7b5e"/>
+                        </g>
+                        
+                    </svg>
+                </div>
+
+                <div class="color-pickers-row">
+                    <div class="picker-group">
+                        <label for="select3">Forma Base</label>
+                        <select id="select3" class="color-select">
+                            <option value="#90b69e">Verde</option>
+                            <option value="#988cd2">Roxo</option>
+                            <option value="#ffd88a" selected>Amarelo</option>
+                            <option value="#6a8fd2">Azul escuro</option>
+                            <option value="#ff9d60">Laranja</option>
+                            <option value="#fb705e">Vermelho</option>
+                            <option value="#79badd">Azul claro</option>
+                        </select>
+                    </div>
+                    <div class="picker-group">
+                        <label for="select5">Forma Topo</label>
+                        <select id="select5" class="color-select">
+                            <option value="#90b69e">Verde</option>
+                            <option value="#988cd2">Roxo</option>
+                            <option value="#ffd88a">Amarelo</option>
+                            <option value="#6a8fd2">Azul escuro</option>
+                            <option value="#ff9d60" selected>Laranja</option>
+                            <option value="#fb705e">Vermelho</option>
+                            <option value="#79badd">Azul claro</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
