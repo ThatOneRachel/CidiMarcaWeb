@@ -1,13 +1,3 @@
-// Dicionário de cores (Pastéis)
-// const colorMap = {
-//     1: '#90b69e', // Verde
-//     2: '#988cd2', // Roxo
-//     3: '#ffd88a', // Amarelo
-//     4: '#6a8fd2', // Azul escuro
-//     5: '#ff9d60', // Laranja
-//     6: '#fb705e', // Vermelho
-//     7: '#79badd'  // Azul claro
-// };
 const colorMap = {
    1: '#90b69e',
    2: '#79badd',
@@ -17,7 +7,20 @@ const colorMap = {
    6: '#ff9d60',
    7: '#fb705e'
 }
-
+/**
+    Lista de quem é o que agora
+    cls-1: bloco "I" inferior esquerdo
+    cls-2: bloco "I" inferior direito
+    cls-3: Triangulo "C" Medio -> media das cores do 4 e 9
+    cls-4: Quadrado C Superior
+    cls-5: Triangulo "I" superior direito 
+    cls-6: naum temos mais :)
+    cls-7: D
+    cls-8: Triangulo "I" Medio esquerdo -> media das cores do 11 e 1
+    cls-9: Quadrado "C" inferior
+    cls-10: Triangulo "I" Medio direito -> media das cores do 5 e 2
+    cls-11: Triangulo "I" Superior esquerdo
+ */
 
 // NOVO: Dicionário tradutor de Pastel para Saturado
 const pastelToSaturated = {
@@ -92,34 +95,73 @@ tabs.forEach(tab => {
     });
 });
 
+/**
+    Lista de quem é o que agora
+    cls-1: bloco "I" inferior esquerdo
+    cls-2: bloco "I" inferior direito
+    cls-3: Triangulo "C" Medio -> media das cores do 4 e 9
+    cls-4: Quadrado C Superior
+    cls-5: Triangulo "I" superior direito 
+    cls-6: naum temos mais :)
+    cls-7: D
+    cls-8: Triangulo "I" Medio esquerdo -> media das cores do 11 e 1
+    cls-9: Quadrado "C" inferior
+    cls-10: Triangulo "I" Medio direito -> media das cores do 5 e 2
+    cls-11: Triangulo "I" Superior esquerdo
+ */
+
 // --- TELA 1: Atualiza a UI baseada no input numérico ---
 function updateUI(position) {
     const colorOrder = generateNumbers(position);
     document.getElementById('numberSequenceOutput').textContent = `Opção dos números: [${colorOrder.join(', ')}]`;
 
     const generatedHexColors = colorOrder.map(num => colorMap[num]);
-    const standardParts = document.querySelectorAll('.brand-part:not(.cls-8)');
+    const standardParts = document.querySelectorAll('.brand-part:not(.cls-3):not(.cls-8):not(.cls-10):not(.cls-6)');
     
-    let colorOfCls5 = '', colorOfCls3 = '';
+    //Cores do C
+    let colorOfCls9 = '', colorOfCls4 = '';
+
+    //Cores do I Esquerdo
+    let colorOfCls11 = '', colorOfCls1 = '';
+
+    //cores do I Direito
+    let colorOfCls5 = '', colorOfCls2 = '';
 
     standardParts.forEach((part, index) => {
         const colorToApply = generatedHexColors[index];
         part.style.fill = colorToApply;
-        if (part.classList.contains('cls-3')) colorOfCls3 = colorToApply;
+        if (part.classList.contains('cls-4')) colorOfCls4 = colorToApply;
+        if (part.classList.contains('cls-9')) colorOfCls9 = colorToApply;
+        if (part.classList.contains('cls-11')) colorOfCls11 = colorToApply;
+        if (part.classList.contains('cls-1')) colorOfCls1 = colorToApply;
         if (part.classList.contains('cls-5')) colorOfCls5 = colorToApply;
+        if (part.classList.contains('cls-2')) colorOfCls2 = colorToApply;
     });
 
+    //Mistura da cor do C
+    const cls3 = document.querySelector('.cls-3');
+
+    //Mistura da cor do I Esquerdo
     const cls8 = document.querySelector('.cls-8');
-    if (cls8 && colorOfCls5 && colorOfCls3) {
+
+    //Mistura da cor do I Direito
+    const cls10 = document.querySelector('.cls-10');
+
+
+
+    if (cls3 && colorOfCls9 && colorOfCls4) {
         // Pega as versões saturadas das duas cores
 
         if (currentTab === 'colorView') {
-        const saturated5 = pastelToSaturated[colorOfCls5];
-        const saturated3 = pastelToSaturated[colorOfCls3];
+        const saturated5 = pastelToSaturated[colorOfCls9];
+        const saturated3 = pastelToSaturated[colorOfCls4];
         // Mistura as versões saturadas e aplica na cls-8
-        cls8.style.fill = blendColors(saturated5, saturated3, 0.75);
+        cls3.style.fill = blendColors(saturated5, saturated3, 0.75);
         } else {
-            cls8.style.fill = blendColors(colorOfCls5, colorOfCls3, 0.75)
+            //mistura das cores na tela principal
+            cls3.style.fill = blendColors(colorOfCls4, colorOfCls9, 0.75)
+            cls8.style.fill = blendColors(colorOfCls11, colorOfCls1, 0.75)
+            cls10.style.fill = blendColors(colorOfCls5, colorOfCls2, 0.75)
         }
     }
 }
@@ -182,6 +224,9 @@ function updateIllustrationBlend() {
     
     // Mistura as versões saturadas e aplica na intersecção
     illus8.style.fill = blendColors(saturated5, saturated3, 0.75);
+
+    const colorCodeSpan = document.getElementById('colorCode');
+    colorCodeSpan.textContent = `#${illus8.style.fill.replace('#', '')}`;
 }
 
 select3.addEventListener('change', updateIllustrationBlend);
