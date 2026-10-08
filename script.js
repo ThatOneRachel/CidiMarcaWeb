@@ -224,6 +224,9 @@ function updateIllustrationBlend() {
     
     // Mistura as versões saturadas e aplica na intersecção
     illus8.style.fill = blendColors(saturated5, saturated3, 0.75);
+
+    const colorCodeSpan = document.getElementById('colorCode');
+    colorCodeSpan.textContent = `#${illus8.style.fill.replace('#', '')}`;
 }
 
 select3.addEventListener('change', updateIllustrationBlend);
